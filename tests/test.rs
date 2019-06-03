@@ -149,14 +149,14 @@ fn petstore_discriminated() {
         ],
         components: Some(Components {
             schemas: map!{
-                "Cat".to_owned() => ReferenceOr::Item(Schema {
+                "Cat".to_owned() => ReferenceOr::boxed_item(Schema {
                     schema_data: SchemaData {
                         description: Some("A representation of a cat".to_owned()),
                         ..Default::default()
                     },
                     schema_kind: SchemaKind::AllOf { all_of: vec![
                         ReferenceOr::ref_("#/components/schemas/Pet"),
-                        ReferenceOr::Item(Schema {
+                        ReferenceOr::boxed_item(Schema {
                             schema_data: Default::default(),
                             schema_kind: SchemaKind::Type(Type::Object(ObjectType {
                                 properties: map!{
@@ -183,14 +183,14 @@ fn petstore_discriminated() {
                     ]},
                 }),
 
-                "Dog".to_owned() => ReferenceOr::Item(Schema {
+                "Dog".to_owned() => ReferenceOr::boxed_item(Schema {
                     schema_data: SchemaData {
                         description: Some("A representation of a dog".to_owned()),
                         ..Default::default()
                     },
                     schema_kind: SchemaKind::AllOf { all_of: vec![
                         ReferenceOr::ref_("#/components/schemas/Pet"),
-                        ReferenceOr::Item(Schema {
+                        ReferenceOr::boxed_item(Schema {
                             schema_data: Default::default(),
                             schema_kind: SchemaKind::Type(Type::Object(ObjectType {
                                 properties: map!{
@@ -213,7 +213,7 @@ fn petstore_discriminated() {
                     ]},
                 }),
 
-                "Pet".to_owned() => ReferenceOr::Item(Schema {
+                "Pet".to_owned() => ReferenceOr::boxed_item(Schema {
                     schema_data: SchemaData {
                         discriminator: Some(Discriminator {
                             property_name: "petType".to_owned(),
