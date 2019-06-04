@@ -13,3 +13,6 @@ description = "This crate aims to provide data structures that represent the Ope
 serde = {version = "1.0", features = ["derive", "rc"]}
 serde_json = "1.0"
 serde_yaml = "0.8"
+
+[replace]
+"serde:1.0.92" = { path = "../serde/serde", features = ["verbose-debug"] }
